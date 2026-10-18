@@ -142,3 +142,6 @@ MAILERS = {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
 }
+
+ALLOWED_HOSTS = ['prepod.pythonanywhere.com']
+DEBUG = False
