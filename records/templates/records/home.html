@@ -1,0 +1,7 @@
+{% extends 'records/base.html' %}
+{% block title %}Главная{% endblock %}
+{% block content %}
+<div class="p-4 p-md-5 mb-4 bg-light rounded-3"><div class="container-fluid py-2"><h1 class="display-6 fw-bold">Учёт показателей здоровья</h1><p class="col-md-9 fs-5">Вводите и проверяйте учебные данные, храните их в JSON-файлах или SQLite, ищите и редактируйте записи из базы данных.</p><a href="{% url 'records:create' %}" class="btn btn-primary btn-lg">Добавить запись</a></div></div>
+<div class="row g-3"><div class="col-md-6"><div class="card h-100"><div class="card-body"><h5>JSON-файлы</h5><p class="display-6">{{ json_count }}</p><p class="text-muted">Файлов с данными</p><a class="btn btn-outline-primary" href="{% url 'records:view_data' %}?source=json">Просмотреть JSON</a></div></div></div><div class="col-md-6"><div class="card h-100"><div class="card-body"><h5>SQLite</h5><p class="display-6">{{ db_count }}</p><p class="text-muted">Записей в базе данных</p><a class="btn btn-outline-primary" href="{% url 'records:view_data' %}?source=db">Открыть базу данных</a></div></div></div></div>
+<div class="mt-4 d-flex flex-wrap gap-2"><a href="{% url 'records:upload' %}" class="btn btn-outline-secondary">Загрузить JSON-файл</a></div>
+{% endblock %}
