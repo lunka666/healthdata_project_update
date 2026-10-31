@@ -204,10 +204,15 @@ def view_data(request):
 @require_GET
 def ajax_search(request):
     query = request.GET.get('q', '').strip()
-    from django.db.models import Q
+    from django.db.models import Q, TextField
+    from django.db.models.functions import Cast
     qs = HealthRecord.objects.all()
     if query:
-        qs = qs.filter(Q(patient_full_name__icontains=query) | Q(blood_type__icontains=query) | Q(symptoms__icontains=query))
+        qs = qs.annotate(symptoms_text=Cast('symptoms', output_field=TextField())).filter(
+            Q(patient_full_name__icontains=query)
+            | Q(blood_type__icontains=query)
+            | Q(symptoms_text__icontains=query)
+        )
     results = [{
         'id': r.pk, 'patient_full_name': r.patient_full_name, 'birth_date': r.birth_date.isoformat(),
         'blood_type': r.blood_type, 'height_cm': r.height_cm, 'weight_kg': r.weight_kg,

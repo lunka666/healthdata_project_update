@@ -5,3 +5,10 @@ db.sqlite3
 .DS_Store
 data_storage/json/*.json
 !data_storage/json/.gitkeep
+
+.env
+.env.*
+!.env.example
+staticfiles/
+migration/*.json
+*.log
