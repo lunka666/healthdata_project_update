@@ -13,7 +13,7 @@
             {% if field.errors %}<div class="text-danger small">{{ field.errors|striptags }}</div>{% endif %}
         </div>{% endfor %}
         <label class="form-label" for="destination">Сохранить данные в</label>
-        <select class="form-select mb-3" name="destination" id="destination"><option value="json">JSON-файл</option><option value="db">База данных SQLite</option></select>
+        <select class="form-select mb-3" name="destination" id="destination"><option value="json">JSON-файл</option><option value="db">База данных PostgreSQL</option></select>
         <div class="d-flex gap-2"><button type="submit" class="btn btn-primary">Сохранить запись</button><a class="btn btn-outline-secondary" href="{% url 'records:view_data' %}">К данным</a></div>
     </form>
 </div></div>
